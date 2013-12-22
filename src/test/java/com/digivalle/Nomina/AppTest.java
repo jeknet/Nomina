@@ -1,4 +1,4 @@
-package com.digivalle.Nomina;
+package com.digivalle.nomina;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
