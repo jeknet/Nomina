@@ -1,4 +1,4 @@
-package com.digivalle.Nomina;
+package com.digivalle.nomina;
 
 /**
  * Hello world!
