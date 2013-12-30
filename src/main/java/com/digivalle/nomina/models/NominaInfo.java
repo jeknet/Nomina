@@ -1,5 +1,7 @@
 package com.digivalle.nomina.models;
 
+import java.util.List;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -7,10 +9,12 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 public class NominaInfo {
 	private final EmpleadorInfo empleador;
 	private final DetalleNominaInfo detalleNomina;
+	private final List<DetalleNominaEmpleado> detalleNominaEmpleados;
 	
-	public NominaInfo(EmpleadorInfo empleador, DetalleNominaInfo detalleNomina){
+	public NominaInfo(EmpleadorInfo empleador, DetalleNominaInfo detalleNomina, List<DetalleNominaEmpleado> detalleNominaEmpleados){
 		this.empleador = empleador;
 		this.detalleNomina = detalleNomina;
+		this.detalleNominaEmpleados = detalleNominaEmpleados;
 	}
 
 	public EmpleadorInfo getEmpleador() {
@@ -21,6 +25,10 @@ public class NominaInfo {
 		return detalleNomina;
 	}
 	
+	public List<DetalleNominaEmpleado> getDetalleNominaEmpleados() {
+		return detalleNominaEmpleados;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if(!(obj instanceof NominaInfo)){
