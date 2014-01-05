@@ -74,6 +74,7 @@ public class App {
 	
 	
 	private static void timbrar(String absolutePath) throws Exception {
+		
         Timbre comercioDigitalResponse;
         File xml = new File(absolutePath);
             comercioDigitalResponse = Servicios.timbrar(FileUtils.readFileContents(xml), "AAA010101AAA", "PWD", Boolean.TRUE);
