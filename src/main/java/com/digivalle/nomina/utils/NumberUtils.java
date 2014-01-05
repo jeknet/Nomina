@@ -12,8 +12,7 @@ public class NumberUtils {
 	
 	public static String parseAsDoubleString(String stringCellValue) {  
 		DecimalFormat df = new DecimalFormat("#");
-		df.setMaximumFractionDigits(0);
-		System.out.println(stringCellValue);
+		df.setMaximumFractionDigits(0); 
 		return df.format(NumberUtils.parseAsDouble(stringCellValue, 0d)); 
 	}
 

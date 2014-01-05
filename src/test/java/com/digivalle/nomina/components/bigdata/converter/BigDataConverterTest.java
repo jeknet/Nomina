@@ -3,6 +3,7 @@ package com.digivalle.nomina.components.bigdata.converter;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -299,6 +300,24 @@ public class BigDataConverterTest {
 		
 	}
 
+	@Test
+	public void createFolioComprobantesTest() throws IOException{
+		RawDataExtractorExcelImpl dataExtractor = new RawDataExtractorExcelImpl();
+		InputStream dataStream = getClass().getClassLoader()
+				.getResourceAsStream("ejemplo2Empleados.xls");
+		NominaInfo nominaInfo2Empleados = dataExtractor.readNomina(dataStream);
+		
+		List<Comprobante> comprobantes = bigDataConverter
+				.createComprobante(nominaInfo2Empleados);
+		
+		assertEquals(2, comprobantes.size());
+		int folio = 0;
+		for(Comprobante comprobante : comprobantes){
+			int folioComprobante = Integer.parseInt(comprobante.getFolio());
+			assertTrue(folioComprobante>folio);
+			folio = folioComprobante;
+		}
+	}
 	// complemento
 	// condicionesDePago
 	// descuento

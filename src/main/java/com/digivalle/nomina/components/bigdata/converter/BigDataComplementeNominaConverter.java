@@ -40,8 +40,7 @@ public class BigDataComplementeNominaConverter {
 		nomina.setDepartamento(detalleNominaEmpleado.getEmpleado()
 				.getDepartamento());
 		// TODO:Recompilar proyecto para que acepte String ya que esta mal
-		// definido en el SAT
-		System.out.println(detalleNominaEmpleado.getEmpleado().getClabe());
+		// definido en el SAT 
 		nomina.setCLABE(new BigInteger(detalleNominaEmpleado.getEmpleado()
 				.getClabe()));
 		// TODO:Recompilar proyecto para que acepte String ya que esta mal
