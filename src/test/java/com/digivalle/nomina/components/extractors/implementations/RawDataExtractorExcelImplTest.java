@@ -35,7 +35,7 @@ public class RawDataExtractorExcelImplTest {
 		assertEquals("Empresas de Prueba SA de CV", nominaInfo.getEmpleador().getRazonSocial());
 		assertEquals("Regimen General", nominaInfo.getEmpleador().getRegimen());
 		assertEquals("av juarez", nominaInfo.getEmpleador().getDireccionFiscal().getCalle());
-		assertEquals("asd", nominaInfo.getEmpleador().getRegistroPatronal());
+		assertEquals("12345678912345700000", nominaInfo.getEmpleador().getRegistroPatronal());
 	}
 	
 	@Test

@@ -26,6 +26,7 @@ public class BigDataConverter {
 		Emisor emisor = BigDataEmisorConverter.createEmisor(
 				nominaInfo.getEmpleador(), nominaInfo.getDetalleNomina());
 
+		int folio = nominaInfo.getDetalleNomina().getFolioInicioNomina();
 		for (DetalleNominaEmpleado detalleNominaEmpleado : nominaInfo
 				.getDetalleNominaEmpleados()) {
 			Comprobante comprobante = new Comprobante();
@@ -55,7 +56,8 @@ public class BigDataConverter {
 			comprobante.setCondicionesDePago("Contado");
 			comprobante.setLugarExpedicion(emisor.getExpedidoEn().getEstado());
 			comprobante.setFecha(new Date());
-
+			comprobante.setFolio(String.format("%d", folio++));
+			
 			comprobantes.add(comprobante);
 		}
 
