@@ -31,7 +31,7 @@ public class RawDataExtractorExcelImplTest {
 	public void readEmpleadorHeaderTest() throws FileNotFoundException, IOException{
 		NominaInfo nominaInfo = dataExtractor.readNomina(dataStream);
 		 
-		assertEquals("SCD010101ABC", nominaInfo.getEmpleador().getRfc());
+		assertEquals("AAA010101AAA", nominaInfo.getEmpleador().getRfc());
 		assertEquals("Empresas de Prueba SA de CV", nominaInfo.getEmpleador().getRazonSocial());
 		assertEquals("Regimen General", nominaInfo.getEmpleador().getRegimen());
 		assertEquals("av juarez", nominaInfo.getEmpleador().getDireccionFiscal().getCalle());

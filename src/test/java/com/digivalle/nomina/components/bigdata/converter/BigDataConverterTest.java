@@ -73,7 +73,7 @@ public class BigDataConverterTest {
 		assertEquals("Centro", emisor.getDomicilioFiscal().getColonia());
 		assertEquals("Torreon", emisor.getDomicilioFiscal().getMunicipio());
 		assertEquals("Torreon", emisor.getDomicilioFiscal().getLocalidad());
-		assertEquals("", emisor.getDomicilioFiscal().getReferencia());
+		assertEquals(null, emisor.getDomicilioFiscal().getReferencia());
 		assertEquals("Mexico", emisor.getDomicilioFiscal().getPais());
 		assertEquals("32000", emisor.getDomicilioFiscal().getCodigoPostal());
 
@@ -83,14 +83,14 @@ public class BigDataConverterTest {
 		assertEquals("Centro", emisor.getExpedidoEn().getColonia());
 		assertEquals("Torreon", emisor.getExpedidoEn().getMunicipio());
 		assertEquals("Torreon", emisor.getExpedidoEn().getLocalidad());
-		assertEquals("", emisor.getExpedidoEn().getReferencia());
+		assertEquals(null, emisor.getExpedidoEn().getReferencia());
 		assertEquals("Mexico", emisor.getExpedidoEn().getPais());
 		assertEquals("32000", emisor.getExpedidoEn().getCodigoPostal());
 
 		assertEquals("Empresas de Prueba SA de CV", emisor.getNombre());
 		assertEquals("Regimen General", emisor.getRegimenFiscal().get(0)
 				.getRegimen());
-		assertEquals("SCD010101ABC", emisor.getRfc());
+		assertEquals("AAA010101AAA", emisor.getRfc());
 	}
 
 	// receptor
@@ -173,16 +173,16 @@ public class BigDataConverterTest {
 		assertEquals(new BigDecimal(10), nomina.getNumDiasPagados());
 		assertEquals("DEP999", nomina.getDepartamento());
 		assertEquals(new BigInteger("123456789012347000"), nomina.getCLABE());
-		assertEquals(new Integer(1), nomina.getBanco());
+		assertEquals(new Integer(100), nomina.getBanco());
 		assertEquals("2011-12-01T00:00:00.000-06:00", nomina.getFechaInicioRelLaboral().toString());
 		assertEquals(new Integer(2), nomina.getAntiguedad());
 		assertEquals("soldador", nomina.getPuesto());
 		assertEquals("planta", nomina.getTipoContrato());
 		assertEquals("Diurna", nomina.getTipoJornada());
 		assertEquals("Semanal", nomina.getPeriodicidadPago());
-		assertEquals(new BigDecimal(200.22), nomina.getSalarioBaseCotApor());
+		assertEquals(new BigDecimal(200), nomina.getSalarioBaseCotApor());
 		assertEquals(new Integer(1), nomina.getRiesgoPuesto());
-		assertEquals(new BigDecimal(220.333), nomina.getSalarioDiarioIntegrado());
+		assertEquals(new BigDecimal(220), nomina.getSalarioDiarioIntegrado());
 	}
 	
 	@Test

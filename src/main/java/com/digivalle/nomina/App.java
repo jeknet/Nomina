@@ -30,9 +30,14 @@ public class App {
 	public static void main(String[] args) {
 		RawDataExtractorExcelImpl dataExtractor = new RawDataExtractorExcelImpl();
 		InputStream dataStream;
+
+		String sourceFile = args[0];
+		String keyFile = args[1];
+		String cerFile = args[2];
+		String targetPath = args[3];
+
 		try {
-			dataStream = new FileInputStream(
-					"/Users/huac/Clients/digivalle/nomina/src/test/resources/ejemplo.xls");
+			dataStream = new FileInputStream(sourceFile);
 			NominaInfo nominaInfo = dataExtractor.readNomina(dataStream);
 			BigDataConverter bigDataConverter = new BigDataConverter();
 			List<Comprobante> comprobantes = bigDataConverter
@@ -41,22 +46,18 @@ public class App {
 				CFDv32 cfd32 = new CFDv32(comprobante,
 						"mx.bigdata.sat.common.nomina.schema");
 				cfd32.addNamespace("http://www.sat.gob.mx/nomina", "nomina");
-				PrivateKey key = KeyLoaderFactory
-						.createInstance(
-								KeyLoaderEnumeration.PRIVATE_KEY_LOADER,
-								new FileInputStream(
-										"/Users/huac/Clients/digivalle/nomina/src/test/resources/CSD01_AAA010101AAA.key"),
-								"12345678a").getKey();
-				X509Certificate cert = KeyLoaderFactory
-						.createInstance(
-								KeyLoaderEnumeration.PUBLIC_KEY_LOADER,
-								"/Users/huac/Clients/digivalle/nomina/src/test/resources/CSD01_AAA010101AAA.cer")
+				PrivateKey key = KeyLoaderFactory.createInstance(
+						KeyLoaderEnumeration.PRIVATE_KEY_LOADER,
+						new FileInputStream(keyFile), "12345678a").getKey();
+				X509Certificate cert = KeyLoaderFactory.createInstance(
+						KeyLoaderEnumeration.PUBLIC_KEY_LOADER, cerFile)
 						.getKey();
 				cfd32.sellar(key, cert);
 				cfd32.validar();
 				cfd32.verificar();
-				cfd32.guardar(new FileOutputStream("/Users/huac/1.xml"));
-				timbrar("/Users/huac/1.xml");
+				String comprobanteFileName = String.format("%s/%s_%s_%s.xml", targetPath, comprobante.getFolio(), comprobante.getReceptor().getRfc(), comprobante.getFecha());
+				cfd32.guardar(new FileOutputStream(comprobanteFileName));
+				timbrar(comprobanteFileName);
 			}
 
 		} catch (FileNotFoundException e) {
@@ -71,17 +72,21 @@ public class App {
 		}
 
 	}
-	
-	
+
 	private static void timbrar(String absolutePath) throws Exception {
-		
-        Timbre comercioDigitalResponse;
-        File xml = new File(absolutePath);
-            comercioDigitalResponse = Servicios.timbrar(FileUtils.readFileContents(xml), "AAA010101AAA", "PWD", Boolean.TRUE);
-            if (comercioDigitalResponse.status == 200) {
-                FileUtils.overwriteFileContents(xml, comercioDigitalResponse.xml_timbrado);
-                return;
-            }
-            throw new Exception("-Comercio Digital- Status:" + comercioDigitalResponse.status + ", Error: " + comercioDigitalResponse.error);
-    }
+
+		Timbre comercioDigitalResponse;
+		File xml = new File(absolutePath);
+		comercioDigitalResponse = Servicios.timbrar(
+				FileUtils.readFileContents(xml), "AAA010101AAA", "PWD",
+				Boolean.TRUE);
+		if (comercioDigitalResponse.status == 200) {
+			FileUtils.overwriteFileContents(xml,
+					comercioDigitalResponse.xml_timbrado);
+			return;
+		}
+		throw new Exception("-Comercio Digital- Status:"
+				+ comercioDigitalResponse.status + ", Error: "
+				+ comercioDigitalResponse.error);
+	}
 }
