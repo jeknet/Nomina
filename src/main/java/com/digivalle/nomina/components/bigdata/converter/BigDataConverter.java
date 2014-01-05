@@ -11,6 +11,7 @@ import mx.bigdata.sat.cfdi.v32.schema.Comprobante.Conceptos;
 import mx.bigdata.sat.cfdi.v32.schema.Comprobante.Emisor;
 import mx.bigdata.sat.cfdi.v32.schema.Comprobante.Impuestos;
 import mx.bigdata.sat.cfdi.v32.schema.Comprobante.Receptor;
+import mx.bigdata.sat.cfdi.v32.schema.ObjectFactory;
 
 import com.digivalle.nomina.models.DetalleNominaEmpleado;
 import com.digivalle.nomina.models.NominaInfo;
@@ -28,7 +29,7 @@ public class BigDataConverter {
 
 		for (DetalleNominaEmpleado detalleNominaEmpleado : nominaInfo
 				.getDetalleNominaEmpleados()) {
-			Comprobante comprobante = new Comprobante();
+			Comprobante comprobante = new ObjectFactory().createComprobante();
 			Receptor receptor = BigDataReceptorConverter
 					.createReceptor(detalleNominaEmpleado.getEmpleado());
 			Conceptos conceptos = BigDataConceptosConverter
@@ -52,6 +53,7 @@ public class BigDataConverter {
 			comprobante.setTipoCambio("1");
 			comprobante.setMoneda("MXN");
 			comprobante.setMetodoDePago("No identificado");
+			comprobante.setFormaDePago("una sola exhibicion");
 			comprobante.setCondicionesDePago("Contado");
 			comprobante.setLugarExpedicion(emisor.getExpedidoEn().getEstado());
 			comprobante.setFecha(new Date());

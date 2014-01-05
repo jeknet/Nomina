@@ -14,15 +14,17 @@ public class BigDataComplementeNominaConverter {
 
 	public static Complemento createComplemento(
 			DetalleNominaEmpleado detalleNominaEmpleado, NominaInfo nominaInfo) {
-		Complemento complemento = new Complemento();
+		Complemento complemento = new mx.bigdata.sat.cfdi.v32.schema.ObjectFactory()
+				.createComprobanteComplemento();
 		addNominaAttributes(complemento, detalleNominaEmpleado, nominaInfo);
-		
+
 		return complemento;
 	}
 
 	private static void addNominaAttributes(Complemento complemento,
 			DetalleNominaEmpleado detalleNominaEmpleado, NominaInfo nominaInfo) {
-		Nomina nomina = new Nomina();
+		Nomina nomina = new mx.bigdata.sat.common.nomina.schema.ObjectFactory()
+				.createNomina();
 		nomina.setVersion("1.1");
 		nomina.setRegistroPatronal(nominaInfo.getEmpleador()
 				.getRegistroPatronal());
@@ -73,14 +75,16 @@ public class BigDataComplementeNominaConverter {
 		nomina.setFechaInicioRelLaboral(TimeUtils
 				.createXmlGregorianCalendar(detalleNominaEmpleado.getEmpleado()
 						.getFechaInicioLaboral()));
-		
-		BigDataComplementoNominaPercepcionesConverter.addPercepciones(nomina, detalleNominaEmpleado);
-		BigDataComplementoNominaDeduccionesConverter.addDeducciones(nomina, detalleNominaEmpleado);
-		BigDataComplementoNominaIncapacidadesConverter.addIncapacidades(nomina, detalleNominaEmpleado);
-		BigDataComplementoNominaHorasExtrasConverter.addHorasExtras(nomina, detalleNominaEmpleado);
 
+		BigDataComplementoNominaPercepcionesConverter.addPercepciones(nomina,
+				detalleNominaEmpleado);
+		BigDataComplementoNominaDeduccionesConverter.addDeducciones(nomina,
+				detalleNominaEmpleado);
+		BigDataComplementoNominaIncapacidadesConverter.addIncapacidades(nomina,
+				detalleNominaEmpleado);
+		BigDataComplementoNominaHorasExtrasConverter.addHorasExtras(nomina,
+				detalleNominaEmpleado);
 
-		
 		complemento.getAny().add(nomina);
 	}
 }
