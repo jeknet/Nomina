@@ -12,7 +12,7 @@ public class Empleado {
 	private final String nombreCompleto;
 	private final String rfc;
 	private final String curp;
-	private final String tipoRegimen;
+	private final Integer tipoRegimen;
 	private final String nss;
 	private final String departamento;
 	private final String clabe;
@@ -24,16 +24,22 @@ public class Empleado {
 	private final String tipoJornada;
 	private final String periodicidadPago;
 	private final Double salarioBase;
-	private final String riesgoPuesto;
+	private final Integer riesgoPuesto;
 	private final Double salarioBaseIntegrado;
+	private final Double totalPercepcionesGravado;
+	private final Double totalPercepcionesExento;
+	private final Double totalDeduccionesGravado;
+	private final Double totalDeduccionesExento;
 
 	public Empleado(Integer id, String idInterno, String nombreCompleto,
-			String rfc, String curp,
-			String tipoRegimen, String nss, String departamento, String clabe,
-			String banco, Date fechaInicioLaboral, Integer antiguedad,
-			String puesto, String tipoContrato, String tipoJornada,
-			String periodicidadPago, Double salarioBase, String riesgoPuesto,
-			Double salarioBaseIntegrado) {
+			String rfc, String curp, Integer tipoRegimen, String nss,
+			String departamento, String clabe, String banco,
+			Date fechaInicioLaboral, Integer antiguedad, String puesto,
+			String tipoContrato, String tipoJornada, String periodicidadPago,
+			Double salarioBase, Integer riesgoPuesto,
+			Double salarioBaseIntegrado, Double totalPercepcionesGravado,
+			Double totalPercepcionesExento, Double totalDeduccionesGravado,
+			Double totalDeduccionesExento) {
 		this.id = id;
 		this.idInterno = idInterno;
 		this.nombreCompleto = nombreCompleto;
@@ -46,13 +52,17 @@ public class Empleado {
 		this.banco = banco;
 		this.fechaInicioLaboral = fechaInicioLaboral;
 		this.antiguedad = antiguedad;
-		this.puesto  = puesto;
+		this.puesto = puesto;
 		this.tipoContrato = tipoContrato;
 		this.tipoJornada = tipoJornada;
 		this.periodicidadPago = periodicidadPago;
 		this.salarioBase = salarioBase;
 		this.riesgoPuesto = riesgoPuesto;
 		this.salarioBaseIntegrado = salarioBaseIntegrado;
+		this.totalPercepcionesGravado = totalPercepcionesGravado;
+		this.totalPercepcionesExento = totalPercepcionesExento;
+		this.totalDeduccionesGravado = totalDeduccionesGravado;
+		this.totalDeduccionesExento = totalDeduccionesExento;
 	}
 
 	public Integer getId() {
@@ -75,7 +85,7 @@ public class Empleado {
 		return curp;
 	}
 
-	public String getTipoRegimen() {
+	public Integer getTipoRegimen() {
 		return tipoRegimen;
 	}
 
@@ -123,43 +133,52 @@ public class Empleado {
 		return salarioBase;
 	}
 
-	public String getRiesgoPuesto() {
+	public Integer getRiesgoPuesto() {
 		return riesgoPuesto;
 	}
 
 	public Double getSalarioBaseIntegrado() {
 		return salarioBaseIntegrado;
 	}
-	
+
+	public Double getTotalPercepcionesGravado() {
+		return totalPercepcionesGravado;
+	}
+
+	public Double getTotalPercepcionesExento() {
+		return totalPercepcionesExento;
+	}
+
+	public Double getTotalDeduccionesGravado() {
+		return totalDeduccionesGravado;
+	}
+
+	public Double getTotalDeduccionesExento() {
+		return totalDeduccionesExento;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Empleado)){
+		if (!(obj instanceof Empleado)) {
 			return false;
 		}
-		
-		Empleado that = (Empleado)obj;
-		
-		return new EqualsBuilder()
-			.append(getIdInterno(), that.getIdInterno()) 
-			.append(getRfc(), that.getRfc())
-			.isEquals();
+
+		Empleado that = (Empleado) obj;
+
+		return new EqualsBuilder().append(getIdInterno(), that.getIdInterno())
+				.append(getRfc(), that.getRfc()).isEquals();
 	}
-	
+
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(93, 39)
-			.append(getIdInterno())
-			.append(getRfc())
-			.toHashCode();
+		return new HashCodeBuilder(93, 39).append(getIdInterno())
+				.append(getRfc()).toHashCode();
 	}
-	
+
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this)
-			.append("idInterno",getIdInterno())
-			.append("nombre",getNombreCompleto())
-			.append("rfc",getRfc())
-			.append("curp",getCurp())
-			.toString();
+		return new ToStringBuilder(this).append("idInterno", getIdInterno())
+				.append("nombre", getNombreCompleto()).append("rfc", getRfc())
+				.append("curp", getCurp()).toString();
 	}
 }

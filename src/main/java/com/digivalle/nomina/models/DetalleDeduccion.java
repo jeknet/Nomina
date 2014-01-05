@@ -5,22 +5,22 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class DetalleDeduccion {
-	private final String tipoPercepcion;
+	private final String tipoDeduccion;
 	private final String clave;
 	private final String concepto;
 	private final Double importeGravado;
 	private final Double importeExcento;
 	
-	public DetalleDeduccion(String tipoPercepcion, String clave, String concepto, Double importeGravado, Double importeExcento){
-		this.tipoPercepcion = tipoPercepcion;
+	public DetalleDeduccion(String tipoDeduccion, String clave, String concepto, Double importeGravado, Double importeExcento){
+		this.tipoDeduccion = tipoDeduccion;
 		this.clave = clave;
 		this.concepto = concepto;
 		this.importeGravado = importeGravado;
 		this.importeExcento = importeExcento;
 	}
 
-	public String getTipoPercepcion() {
-		return tipoPercepcion;
+	public String getTipoDeduccion() {
+		return tipoDeduccion;
 	}
 
 	public String getClave() {

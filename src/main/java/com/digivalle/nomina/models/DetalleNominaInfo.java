@@ -14,10 +14,9 @@ public class DetalleNominaInfo {
 	private final String serie;
 	private final Integer folioInicioNomina;
 	private final String lugarExpedicion;
-	private final Date fechaEmision;
 	
 	public DetalleNominaInfo(Direccion direccionEmision, Date fechaPago, Date fechaInicioPago, Date fechaFinPago, String serie, 
-			Integer folioInicioNomina, String lugarExpedicion, Date fechaEmision){ 
+			Integer folioInicioNomina, String lugarExpedicion){ 
 		this.direccionEmision = direccionEmision; 
 		this.fechaPago = fechaPago;
 		this.fechaInicioPago = fechaInicioPago;
@@ -25,7 +24,6 @@ public class DetalleNominaInfo {
 		this.serie = serie;
 		this.folioInicioNomina = folioInicioNomina;
 		this.lugarExpedicion = lugarExpedicion;
-		this.fechaEmision = fechaEmision;
 	}
 
 	public Direccion getDireccionEmision() {
@@ -56,9 +54,7 @@ public class DetalleNominaInfo {
 		return lugarExpedicion;
 	}
 
-	public Date getFechaEmision() {
-		return fechaEmision;
-	}
+
 	
 	@Override
 	public boolean equals(Object obj) {
@@ -74,7 +70,6 @@ public class DetalleNominaInfo {
 			.append(getSerie(), that.getSerie())
 			.append(getFolioInicioNomina(), that.getFolioInicioNomina())
 			.append(getLugarExpedicion(), that.getLugarExpedicion())
-			.append(getFechaEmision(), that.getFechaEmision())
 			.isEquals();
 	}
 	
@@ -86,7 +81,6 @@ public class DetalleNominaInfo {
 			.append(getSerie())
 			.append(getFolioInicioNomina())
 			.append(getLugarExpedicion())
-			.append(getFechaEmision())
 			.toHashCode();
 	}
 	

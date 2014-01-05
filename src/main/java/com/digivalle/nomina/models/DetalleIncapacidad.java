@@ -6,10 +6,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class DetalleIncapacidad {
 	private final Integer diasIncapacidad;
-	private final String tipoIncapacidad;
+	private final Integer tipoIncapacidad;
 	private final Double descuento;
 	
-	public DetalleIncapacidad(Integer diasIncapacidad, String tipoIncapacidad, Double descuento){
+	public DetalleIncapacidad(Integer diasIncapacidad, Integer tipoIncapacidad, Double descuento){
 		this.diasIncapacidad = diasIncapacidad;
 		this.tipoIncapacidad = tipoIncapacidad;
 		this.descuento = descuento;
@@ -19,7 +19,7 @@ public class DetalleIncapacidad {
 		return diasIncapacidad;
 	}
 
-	public String getTipoIncapacidad() {
+	public Integer getTipoIncapacidad() {
 		return tipoIncapacidad;
 	}
 

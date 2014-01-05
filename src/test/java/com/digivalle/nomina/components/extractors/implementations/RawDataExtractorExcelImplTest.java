@@ -35,7 +35,7 @@ public class RawDataExtractorExcelImplTest {
 		assertEquals("Empresas de Prueba SA de CV", nominaInfo.getEmpleador().getRazonSocial());
 		assertEquals("Regimen General", nominaInfo.getEmpleador().getRegimen());
 		assertEquals("av juarez", nominaInfo.getEmpleador().getDireccionFiscal().getCalle());
-		assertEquals("12345678912345700000", nominaInfo.getEmpleador().getRegistroPatronal());
+		assertEquals("asd", nominaInfo.getEmpleador().getRegistroPatronal());
 	}
 	
 	@Test
@@ -48,7 +48,6 @@ public class RawDataExtractorExcelImplTest {
 		assertEquals("UA", nominaInfo.getDetalleNomina().getSerie());
 		assertEquals(new Integer(1), nominaInfo.getDetalleNomina().getFolioInicioNomina());
 		assertEquals("Torreon Coahuila", nominaInfo.getDetalleNomina().getLugarExpedicion());
-		assertEquals(df.parse("2013-12-15 11:12:00"), nominaInfo.getDetalleNomina().getFechaEmision());
 		 
 		assertEquals("av juarez", nominaInfo.getDetalleNomina().getDireccionEmision().getCalle()); 
 	}
@@ -62,6 +61,7 @@ public class RawDataExtractorExcelImplTest {
 		assertEquals("Juan Perez Mendez", nominaEmpleado.getEmpleado().getNombreCompleto());
 		assertEquals("JJJJ010101U89", nominaEmpleado.getEmpleado().getRfc());
 		assertEquals("AAAA990909HAABBBA9", nominaEmpleado.getEmpleado().getCurp());
+		assertEquals(new Double("21000"), nominaEmpleado.getEmpleado().getTotalPercepcionesGravado());
 		
 		assertEquals(3, nominaEmpleado.getPercepciones().size());
 		assertEquals(2, nominaEmpleado.getDeducciones().size());

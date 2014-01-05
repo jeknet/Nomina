@@ -9,6 +9,13 @@ public class NumberUtils {
 		df.setMaximumFractionDigits(0);
 		return df.format(numericCellValue); 
 	}
+	
+	public static String parseAsDoubleString(String stringCellValue) {  
+		DecimalFormat df = new DecimalFormat("#");
+		df.setMaximumFractionDigits(0);
+		System.out.println(stringCellValue);
+		return df.format(NumberUtils.parseAsDouble(stringCellValue, 0d)); 
+	}
 
 	public static Integer parseAsInt(String numericStringCellValue, Integer defaultValue) {
 		try{

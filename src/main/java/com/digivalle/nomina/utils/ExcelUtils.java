@@ -15,7 +15,8 @@ public class ExcelUtils {
 			return "";
 		}
 		if (HSSFCell.CELL_TYPE_NUMERIC == cell.getCellType()) {
-			return NumberUtils.parseAsIntString(cell.getNumericCellValue());
+			cell.setCellType(HSSFCell.CELL_TYPE_STRING); 
+			return NumberUtils.parseAsDoubleString(cell.getStringCellValue());
 		}
 		return cell.getStringCellValue();
 	}
@@ -25,8 +26,8 @@ public class ExcelUtils {
 		if (cell == null) {
 			return "";
 		}
-		if (HSSFCell.CELL_TYPE_NUMERIC == cell.getCellType()) {
-			return NumberUtils.parseAsIntString(cell.getNumericCellValue());
+		if (HSSFCell.CELL_TYPE_NUMERIC == cell.getCellType()) { 
+			cell.setCellType(HSSFCell.CELL_TYPE_STRING); 
 		}
 		return cell.getStringCellValue();
 	}
