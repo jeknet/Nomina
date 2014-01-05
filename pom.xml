@@ -34,6 +34,11 @@
 			<version>0.2.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
+			<groupId>mx.comercio-digital</groupId>
+			<artifactId>timbrado</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>3.9</version>
@@ -58,4 +63,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+
 </project>
