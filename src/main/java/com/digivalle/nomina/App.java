@@ -15,6 +15,8 @@ import mx.bigdata.sat.cfdi.v32.schema.Comprobante;
 import mx.bigdata.sat.security.KeyLoaderEnumeration;
 import mx.bigdata.sat.security.factory.KeyLoaderFactory;
 
+import com.comerciodigital.conector.Servicios;
+import com.comerciodigital.conector.Timbre;
 import com.digivalle.nomina.components.bigdata.converter.BigDataConverter;
 import com.digivalle.nomina.components.extractors.implementations.RawDataExtractorExcelImpl;
 import com.digivalle.nomina.models.NominaInfo;
@@ -71,7 +73,7 @@ public class App {
 	}
 	
 	
-	private static void timbrarInvoice(String absolutePath) throws Exception {
+	private static void timbrar(String absolutePath) throws Exception {
         Timbre comercioDigitalResponse;
         File xml = new File(absolutePath);
             comercioDigitalResponse = Servicios.timbrar(FileUtils.readFileContents(xml), "AAA010101AAA", "PWD", Boolean.TRUE);
