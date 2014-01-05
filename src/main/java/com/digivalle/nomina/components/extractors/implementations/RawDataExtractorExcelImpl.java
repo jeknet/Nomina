@@ -85,8 +85,8 @@ public class RawDataExtractorExcelImpl implements RawDataExtractor {
 			Integer diasPagados = readDiasPagados(list);
 			List<DetallePercepcion> percepciones = readPercepciones(list);
 			List<DetalleDeduccion> deducciones = readDeducciones(list);
-			DetalleIncapacidad incapacidad = readIncapacidad(list);
-			DetalleHorasExtras horasExtras = readHorasExtras(list);
+			List<DetalleIncapacidad> incapacidad = readIncapacidad(list);
+			List<DetalleHorasExtras> horasExtras = readHorasExtras(list);
 
 			return new DetalleNominaEmpleado(empleado, diasPagados,
 					percepciones, deducciones, incapacidad, horasExtras);
@@ -204,14 +204,15 @@ public class RawDataExtractorExcelImpl implements RawDataExtractor {
 				importeGravado, importeExcento);
 	}
 
-	private DetalleIncapacidad readIncapacidad(List<HSSFRow> rows) {
+	private List<DetalleIncapacidad> readIncapacidad(List<HSSFRow> rows) {
+		List<DetalleIncapacidad> incapacidades = new LinkedList<DetalleIncapacidad>();
 		for (HSSFRow row : rows) {
 			String tipoLinea = ExcelUtils.readString(row, 1);
 			if (TiposLineaExcel.LINEA_INCAPACIDAD.equals(tipoLinea)) {
-				return readDetalleIncapacidad(row);
+				incapacidades.add(readDetalleIncapacidad(row));
 			}
 		}
-		return null;
+		return incapacidades;
 	}
 
 	private DetalleIncapacidad readDetalleIncapacidad(HSSFRow row) {
@@ -223,14 +224,15 @@ public class RawDataExtractorExcelImpl implements RawDataExtractor {
 				descuento);
 	}
 
-	private DetalleHorasExtras readHorasExtras(List<HSSFRow> rows) {
+	private List<DetalleHorasExtras> readHorasExtras(List<HSSFRow> rows) {
+		List<DetalleHorasExtras> horasExtras = new LinkedList<DetalleHorasExtras>();
 		for (HSSFRow row : rows) {
 			String tipoLinea = ExcelUtils.readString(row, 1);
 			if (TiposLineaExcel.LINEA_HORAS_EXTAS.equals(tipoLinea)) {
-				return readDetalleHorasExtras(row);
+				horasExtras.add(readDetalleHorasExtras(row));
 			}
 		}
-		return null;
+		return horasExtras;
 	}
 
 	private DetalleHorasExtras readDetalleHorasExtras(HSSFRow row) {

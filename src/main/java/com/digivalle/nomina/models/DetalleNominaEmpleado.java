@@ -11,11 +11,11 @@ public class DetalleNominaEmpleado {
 	private final Integer diasPagados;
 	private final List<DetallePercepcion> percepciones;
 	private final List<DetalleDeduccion> deducciones;
-	private final DetalleIncapacidad incapacidad;
-	private final DetalleHorasExtras horasExtras;
+	private final List<DetalleIncapacidad> incapacidad;
+	private final List<DetalleHorasExtras> horasExtras;
 	
 	public DetalleNominaEmpleado(Empleado empleado, Integer diasPagados, List<DetallePercepcion> percepciones, List<DetalleDeduccion> deducciones,
-			DetalleIncapacidad incapacidad, DetalleHorasExtras horasExtras){
+			List<DetalleIncapacidad> incapacidad, List<DetalleHorasExtras> horasExtras){
 		this.empleado = empleado;
 		this.diasPagados = diasPagados;
 		this.percepciones = percepciones;
@@ -40,11 +40,11 @@ public class DetalleNominaEmpleado {
 		return deducciones;
 	}
 
-	public DetalleIncapacidad getIncapacidad() {
+	public List<DetalleIncapacidad> getIncapacidad() {
 		return incapacidad;
 	}
 
-	public DetalleHorasExtras getHorasExtras() {
+	public List<DetalleHorasExtras> getHorasExtras() {
 		return horasExtras;
 	}
 	

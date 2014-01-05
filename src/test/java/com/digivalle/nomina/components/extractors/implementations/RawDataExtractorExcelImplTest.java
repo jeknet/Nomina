@@ -65,8 +65,8 @@ public class RawDataExtractorExcelImplTest {
 		
 		assertEquals(3, nominaEmpleado.getPercepciones().size());
 		assertEquals(2, nominaEmpleado.getDeducciones().size());
-		assertEquals(new Integer(2), nominaEmpleado.getIncapacidad().getDiasIncapacidad()); 
-		assertEquals(new Integer(20), nominaEmpleado.getHorasExtras().getHorasExtras());
+		assertEquals(new Integer(2), nominaEmpleado.getIncapacidad().get(0).getDiasIncapacidad()); 
+		assertEquals(new Integer(20), nominaEmpleado.getHorasExtras().get(0).getHorasExtras());
 	}
 	 
 }

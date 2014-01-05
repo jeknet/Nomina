@@ -16,9 +16,8 @@ public class BigDataComplementoNominaIncapacidadesConverter {
 			DetalleNominaEmpleado detalleNominaEmpleado) {
 
 		Incapacidades incapacidades = new Incapacidades();
-		// TODO: fix with real list
-		for (DetalleIncapacidad detalleIncapacidad : Arrays
-				.asList(detalleNominaEmpleado.getIncapacidad())) {
+		 
+		for (DetalleIncapacidad detalleIncapacidad : detalleNominaEmpleado.getIncapacidad()) {
 			Incapacidad incapacidad = new Incapacidad();
 			incapacidad.setTipoIncapacidad(detalleIncapacidad
 					.getTipoIncapacidad());

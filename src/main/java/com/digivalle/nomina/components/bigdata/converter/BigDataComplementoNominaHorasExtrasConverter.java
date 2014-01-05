@@ -1,7 +1,6 @@
 package com.digivalle.nomina.components.bigdata.converter;
 
 import java.math.BigDecimal;
-import java.util.Arrays;
 
 import mx.bigdata.sat.common.nomina.schema.Nomina;
 import mx.bigdata.sat.common.nomina.schema.Nomina.HorasExtras;
@@ -15,9 +14,8 @@ public class BigDataComplementoNominaHorasExtrasConverter {
 	public static void addHorasExtras(Nomina nomina,
 			DetalleNominaEmpleado detalleNominaEmpleado) {
 		HorasExtras horasExtras = new HorasExtras();
-		// TODO: fix with real list
-		for (DetalleHorasExtras detalleHorasExtra : Arrays
-				.asList(detalleNominaEmpleado.getHorasExtras())) {
+		
+		for (DetalleHorasExtras detalleHorasExtra : detalleNominaEmpleado.getHorasExtras()) {
 			HorasExtra horasExtra = new HorasExtra();
 			horasExtra.setDias(detalleHorasExtra.getDias());
 			horasExtra.setHorasExtra(detalleHorasExtra.getHorasExtras());
